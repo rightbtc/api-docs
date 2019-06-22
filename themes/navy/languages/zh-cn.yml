@@ -1,7 +1,7 @@
 menu:
-  docs: 文档
+  api_v1: API-v1
   api: FAQ
-  news: 新闻
+  news: ReleaseNotes
   plugins: 插件
   themes: 主题
   search: 搜索
@@ -18,7 +18,7 @@ page:
   last_updated: 上次更新：%s
 
 sidebar:
-  docs:
+  api_v1:
     getting_started: 开始使用
     overview: 概述
     setup: 建站 yangcongtou test

@@ -1,7 +1,7 @@
 menu:
-  docs: Docs
-  api: FAQ
-  news: News
+  api_v1: API-v1
+  FAQ: FAQ
+  news: Relase Notes
   plugins: Plugins
   themes: Themes
   search: Search
@@ -18,7 +18,7 @@ page:
   last_updated: "Last updated: %s"
 
 sidebar:
-  docs:
+  api_v1:
     getting_started: Getting Started
     overview: Overview
     setup: Setup
