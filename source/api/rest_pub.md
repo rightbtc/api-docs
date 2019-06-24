@@ -1,4 +1,4 @@
-title: REST PUBLIC ENDPOINTS
+title: REST Public Endpoints
 ---
 You can access following endpoints:
 ``` yaml
@@ -7,8 +7,7 @@ production-endpoint:
 test-api-endpoint:
 - https://test-api.rightbtc.com
 ```
-*`production-endpoint`* provides real access of rightbtc platform. Otherwise, *`test-api-endpoint`* is a dummy environment of rightbtc, you can apply [testing api/secret pairs]() for playing.
-
+**All Authenticated Endpoints use GET requests.**
 *All examples assume the `test-api-endpoint`*.
 
 ### Markets
@@ -98,10 +97,10 @@ Key | Type | Description
 `asset`| [string] | subject asset of this contract |
 `ccy`| [string] | currency asset of this contract |
 `lotNumer`| [integer] | lots number of this contract, if null then spot |
-`lotDenom`| [integer] | lot denom, define asset decimals to lot |
+`lotDenom`| [integer] | lot denominator, define asset decimals to lot |
 `qtyInc`| [decimal] | real qunatity of this contract |
 `tickNumer`| [integer] | tick number, if null then spot |
-`tickDenom`| [integer] | tick denom, define ccy(currency) decimals to tick |
+`tickDenom`| [integer] | tick denominator, define ccy(currency) decimals to tick |
 `priceInc`| [decimal] | real qunatity of this contract |
 `pipDp`| [integer] | number of decimal places in real |
 `minLots`| [integer] | minimum lots for ask/bid |
@@ -151,7 +150,7 @@ Key | Type | Description
 `mnem`| [string] | global unique mnem(id) of this asset |
 `display`| [string] | display name of this asset |
 `type`| [string] | type of this asset |
-`denom`| [integer] | defaults to 100000000 stands for 8 decimal places |
+`denom`| [integer] | denominator defaults to 100000000 stands for 8 decimal places |
 `state` | [integer] | Open-1, Maintaince-503 |
 
 {% note info Static Configurations %}

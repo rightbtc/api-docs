@@ -36,14 +36,14 @@ Let's see case of:
 
 Now Bitcoin's price is $9000.00, then I want to BUY 0.1 BTC on rightbtc.
 
-|  PAIR | In float price/amount | In rightbc lots/ticks |
+|  PAIR | In float price/amount | In integer lots/ticks |
 |  ------- | -------| ------- |
 |  BTCUSD |  9000.00/0.1  | 900000/100000 |
 
 `price 9000.00` => `ticks 900000` ? because rightbtc defines `1 tick` = `0.01 USD`
 `amount 0.1` => `lots 100000` ? because rightbtc defines `1 lot` = `0.000001 BTC`
 
-Now we also know what is minimum amount and tick of price of one pair in rightbtc.
+Now we also know what is minimum amount and tick of price of any pair.
 
 See API [Contracts](https://api.rightbc.com/v1/contracts) to get each defination of trading pairs.
 
@@ -98,14 +98,15 @@ $ curl --location --request GET "http://api.rightbtc.com/v1/markets"
 ]
 ```
 
-* See [GET Assets]()
-* See [GET Contracts]()
-* See [GET Markets]()
-* See [GET Depth]()
-* See [GET FullDepth]()
-* See [GET Ticker]()
-* See [GET Trades]()
-* See [GET CandleStick]()
+* See [GET Markets](rest_pub.html#Markets)
+* See [GET Contracts](rest_pub.html#Contracts)
+* See [GET Assets](rest_pub.html#Assets)
+* See [GET Depth](rest_pub.html#Depth)
+* See [GET FullDepth](rest_pub.html#FullDepth)
+* See [GET Ticker](rest_pub.html#Ticker)
+* See [GET Trades](rest_pub.html#Trades)
+* See [GET View](rest_pub.html#View)
+* See [GET CandleStick](rest_pub.html#Candlestick)
 
 ### Authenticated Endpoints
 
