@@ -1,4 +1,4 @@
-api_v1: /api_v1/
+api: /api/
 FAQ: /FAQ/
 news: /news/
 # plugins: /plugins/

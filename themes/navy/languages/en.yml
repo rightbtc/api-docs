@@ -1,5 +1,5 @@
 menu:
-  api_v1: API-v1
+  api: API
   FAQ: FAQ
   news: Relase Notes
   plugins: Plugins
@@ -18,54 +18,18 @@ page:
   last_updated: "Last updated: %s"
 
 sidebar:
-  api_v1:
+  api:
     getting_started: Getting Started
+    libraries: Libraries
     overview: Overview
-    setup: Setup
-    yangcongtou: yangcongtou test doc
-    configuration: Configuration
-    commands: Commands
-    migration: Migration
-    basic_usage: Basic Usage
-    writing: Writing
-    front_matter: Front-matter
-    tag_plugins: Tag Plugins
-    asset_folders: Asset Folders
-    data_files: Data Files
-    server: Server
-    generating: Generating
-    deployment: Deployment
-    customization: Customization
-    permalinks: Permalinks
-    themes: Themes
-    structure: Structure
-    templates: Templates
-    variables: Variables
-    helpers: Helpers
-    internationalization: Internationalization (i18n)
-    plugins: Plugins
+    v1: API v1
+    rest_pub: Rest Public
+    rest_auth: Rest Auth
+    websocket_pub: Websocket Public
+    websocket_auth: Websocket Auth
     miscellaneous: Miscellaneous
     troubleshooting: Troubleshooting
     contributing: Contributing
   FAQ:
-    core: Core
+    orders: Orders
     overview: Overview
-    tutorial: Events
-    yct: yct
-    locals: Locals
-    router: Router
-    box: Box
-    rendering: Rendering
-    posts: Posts
-    scaffolds: Scaffolds
-    themes: Themes
-    extensions: Extensions
-    console: Console
-    deployer: Deployer
-    filter: Filter
-    generator: Generator
-    helper: Helper
-    migrator: Migrator
-    processor: Processor
-    renderer: Renderer
-    tag: Tag

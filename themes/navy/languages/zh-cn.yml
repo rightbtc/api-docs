@@ -1,7 +1,7 @@
 menu:
-  api_v1: API-v1
-  api: FAQ
-  news: ReleaseNotes
+  api: API
+  FAQ: FAQ
+  news: Release Notes
   plugins: 插件
   themes: 主题
   search: 搜索
@@ -18,54 +18,18 @@ page:
   last_updated: 上次更新：%s
 
 sidebar:
-  api_v1:
+  api:
     getting_started: 开始使用
+    libraries: 代码库Libraries
+    v1: API v1
     overview: 概述
-    setup: 建站 yangcongtou test
-    yangcongtou: yangcongtou test doc
-    configuration: 配置
-    commands: 命令
-    migration: 迁移
-    basic_usage: 基本操作
-    writing: 写作
-    front_matter: Front-matter
-    tag_plugins: 标签插件
-    asset_folders: 资源文件夹
-    data_files: 数据文件夹
-    server: 服务器
-    generating: 生成器
-    deployment: 部署
-    customization: 自定义
-    permalinks: 永久链接
-    themes: 主题
-    structure: 结构
-    templates: 模版
-    variables: 变量
-    helpers: 辅助函数
-    internationalization: 国际化 (i18n)
-    plugins: 插件
+    rest_pub: Rest Public
+    rest_auth: Rest Auth
+    websocket_pub: Websocket Public
+    websocket_auth: Websocket Auth
     miscellaneous: 其他
     troubleshooting: 问题解答
     contributing: 贡献
   FAQ:
-    core: 帮助中心
+    orders: Orders
     overview: 概述
-    tutorial: 新手教程
-    yct: yct
-    locals: 安全
-    router: 账户访问
-    box: 充值与提现
-    rendering: 渲染
-    posts: 文章
-    scaffolds: 模版 (Scaffold)
-    themes: 主题
-    extensions: 扩展
-    console: 控制台 (Console)
-    deployer: 部署器 (Deployer)
-    filter: 过滤器 (Filter)
-    generator: 生成器 (Generator)
-    helper: 辅助函数 (Helper)
-    migrator: 迁移器 (Migrator)
-    processor: 处理器 (Processor)
-    renderer: 渲染引擎 (Renderer)
-    tag: 标签 (Tag)
