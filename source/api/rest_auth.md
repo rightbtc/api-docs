@@ -186,7 +186,7 @@ Key | Type | Description
 {% note info Order/Status %}
 Order State must be in [`NEW`,`TRADE`,`CANCEL`] and [`PENDING`,`ACCEPTED`]
 * NEW - order is new placed, not filled yet.
-* TRADE - order is `full_filled` or `partily_filled`.
+* TRADE - order is `full_filled` or `particularly_filled`.
 * CANCEL - order is canceled by trader or system(STOP/FOK/IOC).
 * PENDING - a temporary state between acception and execution, extremely short.
 * ACCEPTED - a temporary state, extremely short.
@@ -206,7 +206,7 @@ Field | Type | Required | Description
 See [How to setup HTTP Headers](index.html#Authenticated-Endpoints)
 
 ```bash
-$ curl --location --request POST "http://test-api.rightbtc.com/v1/order/cancel" \
+$ curl --location --request POST "http://test-api.rightbtc.com/v1/order/status" \
   --header "APIKEY: apiKey" \
   --header "SIGNATURE: signature" \
   --header "NONCE: 1561346769" \
@@ -275,10 +275,10 @@ Key | Type | Description
 `resd`: | [lots] | residues of order lots, `if resd != 0` **and** state `TRADE` means `particularly_filled` |
 `exec`: | [lots] | excution of order lots, `if exec == lots` **and** state `TRADE` means `full_filled` |
 `cost`: | [integer] | cost = Σ(lastLots * lastTicks) |
-`lastLots` | [lots] | last matched order taken lots |
-`lastTicks` | [ticks] | last matched order taken ticks |
-`created` | [time] | created timestamp in micro-seconds |
-`modified` | [time] | modified(taken/cancel) timestamp in micro-seconds |
+`lastLots` | [lots] | last taken lots |
+`lastTicks` | [ticks] | last taken ticks |
+`created` | [time] | timestamp of created in micro-seconds |
+`modified` | [time] | timstamp of modified(taken/cancel) in micro-seconds |
 
 {% blockquote %}
 Due to I/O limits of network, system returns max 100 orders once, all orders paged by each 100 orders.
