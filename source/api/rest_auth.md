@@ -1,13 +1,13 @@
 title: REST Authenticated Endpoints
 ---
-You can access following endpoints:
+You can access the following endpoints:
 ``` yaml
 production-endpoint:
 - https://api.rightbtc.com
 test-api-endpoint:
 - https://test-api.rightbtc.com
 ```
-*`production-endpoint`* provides real access of rightbtc platform. Otherwise, *`test-api-endpoint`* is a dummy environment of rightbtc, you can apply [testing api/secret pairs]() for playing.
+*`production-endpoint`* provides real access of the RightBTC platform. Otherwise, *`test-api-endpoint`* is a dummy environment of RightBTC, you can apply for [testing api/secret pairs]() in order to test.
 
 **All Authenticated Endpoints use POST requests.**
 *All examples assume the `test-api-endpoint`*.
@@ -17,7 +17,7 @@ test-api-endpoint:
 {% endnote %}
 
 #### /v1/trader/info
-Basic info(fee/limitation) of this trader.
+Basic info (fee/limitation) of this trader.
 
 Field | Type | Description
 --- | --- | ---
@@ -44,8 +44,8 @@ $ curl --location --request POST "http://test-api.rightbtc.com/v1/trader/info" \
 Key | Type | Description 
 --- | --- | ---
 `mnem` | [string] | global unique trader id |
-`takerFee` | [decimal] | taker fee like 0.002 |
-`makerFee` | [decimal] | maker fee like 0.001 |
+`takerFee` | [decimal] | taker fee expressed like 0.002 |
+`makerFee` | [decimal] | maker fee expressed like 0.001 |
 `orderLimitSec` | [integer] | ORDERS(create/cancel) rate limits, defaults to 10 |
 `specializedFee` | [array] | specialized fee for markets, defaults to null array |
 
@@ -57,7 +57,7 @@ Key | Type | Description
 
 Field | Type | Required | Description
 --- | --- | ---
-`asset` | [string] | No | specify a [asset](rest_pub.html#Assets) `mnem`, if not sent then return a list of trader's balances. |
+`asset` | [string] | No | specify an [asset](rest_pub.html#Assets) `mnem`, if not sent then returns a list of trader's balances. |
 
 See [How to setup HTTP Headers](index.html#Authenticated-Endpoints)
 
@@ -80,8 +80,8 @@ $ curl --location --request POST "http://test-api.rightbtc.com/v1/trader/balance
 `balance:500000000` and `denom = 100000000` is equal to `5 BTC = 500000000/100000000`
 
 {% blockquote %}
-if not sent field `asset` then return JSON array as following.
-**Always list those assets which had incoming history (trades/deposits).**
+if not sent field `asset` then returns JSON array as following.
+**Always list those assets which have incoming history (trades/deposits).**
 {% endblockquote %}
 ```json
 [
@@ -105,7 +105,7 @@ Key | Type | Description
 `asset` | [string] | `mnem` of asset |
 `balance` | [integer] | balance |
 `available` | [interger] | available |
-`denom` | [interger] | defaults to 100000000 = 8 [decimal palaces](rest_pub.html#Assets) |
+`denom` | [interger] | defaults to 100000000 = 8 [decimal places](rest_pub.html#Assets) |
 
 ### Create New Order
 {% note info Order/New %}
@@ -117,8 +117,8 @@ Field | Type | Required | Description
 --- | --- | ---
 `market` | [string] | Yes | `mnem` of market from [markets](rest_pub.html#Markets) |
 `side` | [string] | Yes| order side "BUY" or "SELL" |
-`lots` | [lots] | Yes | order lots, precisions is defined by [contract](rest_pub.html#Contracts) |
-`ticks` | [ticks] | Yes | order ticks, precisions is defined by [contract](rest_pub.html#Contracts) |
+`lots` | [lots] | Yes | order lots, precision is defined by [contract](rest_pub.html#Contracts) |
+`ticks` | [ticks] | Yes | order ticks, precision is defined by [contract](rest_pub.html#Contracts) |
 `type` | [integer] | No | order type, 0-LIMIT;1-MARKET;2-STOP;3-TRAILINGSTOP;4-FOK;5-IOC, defaults to 0 |
 `factor` | [integer] | No | order attribute, 2-HIDDEN , defaults to null (non-Hidden) |
 
@@ -142,14 +142,14 @@ Key | Type | Description
 --- | --- | ---
 `id` | [integer] | `id` of order |
 `market` | [string] | `mnem` of market |
-`state` | [string] | Always "ACCEPTED" if accepted, asynchronous proccessing |
+`state` | [string] | Always "ACCEPTED" if accepted, asynchronous processing |
 
 
 {% blockquote %}
 Global uniquness primary key is `market` and `id`, not single `id`.
 {% endblockquote %}
 
-### Cancel Actived Order
+### Cancel Active Order
 {% note info Order/Cancel %}
 {% endnote %}
 
@@ -180,19 +180,19 @@ Key | Type | Description
 --- | --- | ---
 `id` | [integer] | `id` of order |
 `market` | [string] | `mnem` of market |
-`state` | [string] | Always "ACCEPTED" if accepted, asynchronous proccessing |
+`state` | [string] | Always "ACCEPTED" if accepted, asynchronous processing |
 
-### Query Actived Orders
+### Query Active Orders
 {% note info Order/Status %}
 Order State must be in [`NEW`,`TRADE`,`CANCEL`] and [`PENDING`,`ACCEPTED`]
-* NEW - order is new placed, not filled yet.
+* NEW - order is newly placed, not filled yet.
 * TRADE - order is `full_filled` or `particularly_filled`.
-* CANCEL - order is canceled by trader or system(STOP/FOK/IOC).
+* CANCEL - order is canceled by trader or system (STOP/FOK/IOC).
 * PENDING - a temporary state between acception and execution, extremely short.
 * ACCEPTED - a temporary state, extremely short.
 
-** This API provides ACTIVED order query ONLY. **
-If order done(CANCEL/full_filled), please using [History/Order](#Query-History-Order), otherwise order not found(404).
+** This API provides ACTIVE order query ONLY. **
+If order is done(CANCEL/full_filled), please use [History/Order](#Query-History-Order), otherwise order not found(404).
 {% endnote %}
 
 #### /v1/order/status
@@ -270,25 +270,25 @@ Key | Type | Description
 `type` | [string] | enum of "LIMIT" "MARKET" "STOP" "TRAILINGSTOP" "FOK" "IOC"|
 `state` | [string] | enum of "NEW" "TRADE" "CANCEL" "PENDING" |
 `side`: | [string] | enum of "BUY" "SELL" |
-`lots`: | [lots] | order lots filled by trader when it created |
-`ticks`: | [ticks] | order ticks filled by trader when it created |
+`lots`: | [lots] | order lots filled by trader when created |
+`ticks`: | [ticks] | order ticks filled by trader when created |
 `resd`: | [lots] | residues of order lots, `if resd != 0` **and** state `TRADE` means `particularly_filled` |
-`exec`: | [lots] | excution of order lots, `if exec == lots` **and** state `TRADE` means `full_filled` |
+`exec`: | [lots] | execution of order lots, `if exec == lots` **and** state `TRADE` means `full_filled` |
 `cost`: | [integer] | cost = Σ(lastLots * lastTicks) |
 `lastLots` | [lots] | last taken lots |
 `lastTicks` | [ticks] | last taken ticks |
 `created` | [time] | timestamp of created in micro-seconds |
-`modified` | [time] | timstamp of modified(taken/cancel) in micro-seconds |
+`modified` | [time] | timestamp of modified(taken/cancel) in micro-seconds |
 
 {% blockquote %}
-Due to I/O limits of network, system returns max 100 orders once, all orders paged by each 100 orders.
-You can set field `page` number if your actived orders over 100.
+Due to I/O limits of network, system returns max 100 orders at once, all orders paged by each 100 orders.
+You can set field `page` number if your active orders are over 100.
 {% endblockquote %}
 
 ### Query History Order
 {% note info History/Order %}
 ** This API provides DONE(CANCEL/full_filled) order query ONLY. **
-If actived order, please using [Order/Status](#Query-Actived-Orders), otherwise order not found(404).
+If active order, please use [Order/Status](#Query-Actived-Orders), otherwise order not found(404).
 {% endnote %}
 
 #### /v1/history/order
