@@ -1,6 +1,6 @@
 title: REST Public Endpoints
 ---
-You can access following endpoints:
+You can access the following endpoints:
 ``` yaml
 production-endpoint:
 - https://api.rightbtc.com
@@ -53,8 +53,8 @@ Key | Type | Description
 `settlDate` | [integer] | settlement date, if spot then null |
 `expiryDate` | [integer] | Expiry date, if spot then null |
 `state` | [integer] | Open-1, Maintaince-503 |
-`takerFee` | [decimal] | taker fee like 0.002 |
-`makerFee` | [decimal] | maker fee like 0.001 |
+`takerFee` | [decimal] | taker fee expressed like 0.002 |
+`makerFee` | [decimal] | maker fee expressed like 0.001 |
 
 
 *You may want to know what exactly `contr` is.*
@@ -96,27 +96,27 @@ Key | Type | Description
 `display`| [string] | display name of this contract |
 `asset`| [string] | subject asset of this contract |
 `ccy`| [string] | currency asset of this contract |
-`lotNumer`| [integer] | lots number of this contract, if null then spot |
+`lotNumer`| [integer] | lot number of this contract, if null then spot |
 `lotDenom`| [integer] | lot denominator, define asset decimals to lot |
-`qtyInc`| [decimal] | real qunatity of this contract |
+`qtyInc`| [decimal] | real quantity of this contract |
 `tickNumer`| [integer] | tick number, if null then spot |
 `tickDenom`| [integer] | tick denominator, define ccy(currency) decimals to tick |
-`priceInc`| [decimal] | real qunatity of this contract |
+`priceInc`| [decimal] | real quantity of this contract |
 `pipDp`| [integer] | number of decimal places in real |
 `minLots`| [integer] | minimum lots for ask/bid |
-`maxLots`| [integer] | maximum lots ofr ask/bid |
+`maxLots`| [integer] | maximum lots for ask/bid |
 `state` | [integer] | Open-1, Maintaince-503 |
 
-#### lots
-Let's say BTC floating-Amount `0.1 BTC`, we give lots `1000000` due to *lotDenom:1000000*
+#### Lots
+Let's say BTC floating-Amount is `0.1 BTC`, we give lots `1000000` due to *lotDenom:1000000*
 ```
 lots = integer(floating-Amount * lotDenom)
 
 eg: 100000 = integer(0.1 * 1000000)
 ```
 
-#### ticks
-Let's say BTC floating-Price `$9000.00`, we give ticks `900000` due to *tickDenom:100*
+#### Ticks
+Let's say BTC floating-Price is `$9000.00`, we give ticks `900000` due to *tickDenom:100*
 ```
 ticks = integer(floating-Price * tickDenom)
 
@@ -154,7 +154,7 @@ Key | Type | Description
 `state` | [integer] | Open-1, Maintaince-503 |
 
 {% note info Static Configurations %}
-*Markets/Contracts/Assets* are static configurations of rightbtc, it defines precisions and states of each items, so you may need to load these information once your program startup.
+*Markets/Contracts/Assets* are static configurations of RightBTC, it defines the precision and states of each item, so you may need to load these information once your program starts.
 {% endnote %}
 
 ### Ticker
@@ -184,10 +184,10 @@ Key | Type | Description
 --- | --- | ---
 `lots` | [lots] | lots of ticker |
 `ticks` | [ticks] | ticks of ticker |
-`created` | [time] | timetamp of ticker in micro-seconds |
+`created` | [time] | timestamp of ticker in micro-seconds |
 `high` | [ticks] | high of last 24 hours in ticks |
 `low` | [ticks] | low of last 24 hours in ticks |
-`tail` | [ticks] | the ticks of 24 hours ago in ticks |
+`tail` | [ticks] | the ticks of last 24 hours in ticks |
 `vol` | [lots] | vol of last 24 hours in lots |
 
 * See [market_mnem](#v1-markets)
@@ -199,7 +199,7 @@ Key | Type | Description
 ```bash
 $ curl --location --request GET https://test-api.rightbtc.com/v1/pub/ticker
 ```
-A array of ticker, may empty as `[]`.
+An array of ticker, may empty as `[]`.
 ```json
 [
     {
@@ -252,7 +252,7 @@ Key | Type | Description
 --- | --- | ---
 `lots` | [lots] | lots of each trade |
 `ticks` | [ticks] | ticks of each trade |
-`created` | [time] | timetamp of trade in micro-seconds |
+`created` | [time] | timestamp of trade in micro-seconds |
 `side` | [string] | "BUY" or "SELL" |
 
 * See [market_mnem](#v1-markets)
@@ -260,7 +260,7 @@ Key | Type | Description
 
 ### Depth
 {% note info Depth %}
-Limit max levels is 50.
+Limit max level is 50.
 {% endnote %}
 
 #### /v1/pub/depth/$market_mnem
@@ -287,9 +287,9 @@ $ curl --location --request GET https://test-api.rightbtc.com/v1/pub/depth/ETPBT
 ```
 Key | Type | Description 
 --- | --- | ---
-`ticks` | [ticks] | level at this ticks |
-`lots` | [ticks] | total lots at this ticks |
-`count` | [ticks] | count of total orders at this ticks |
+`ticks` | [ticks] | level at this tick |
+`lots` | [ticks] | total lots at this tick |
+`count` | [ticks] | count of total orders at this tick |
 
 #### /v1/pub/fulldepth/$market_mnem
 Get full depth.
@@ -299,7 +299,7 @@ $ curl --location --request GET https://test-api.rightbtc.com/v1/pub/fulldepth/E
 
 ### View
 {% note info View %}
-OverView of a market, get **Trades/Ticker/Depth** by 1 API call once rather than those 3 API calls.
+Overview of a market, get **Trades/Ticker/Depth** by 1 API call once rather than those 3 API calls.
 {% endnote %}
 
 #### /v1/pub/view/$market_mnem
@@ -309,7 +309,7 @@ $ curl --location --request GET https://test-api.rightbtc.com/v1/pub/view/ETPBTC
 
 ### Candlestick
 
-{% note info CandleStick %}
+{% note info Candlestick %}
 {% endnote %}
 
 #### /v1/pub/candlestick/$market_mnem
