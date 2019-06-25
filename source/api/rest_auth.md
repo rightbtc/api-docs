@@ -192,7 +192,7 @@ Order State must be in [`NEW`,`TRADE`,`CANCEL`] and [`PENDING`,`ACCEPTED`]
 * ACCEPTED - a temporary state, extremely short.
 
 ** This API provides ACTIVED order query ONLY. **
-** If order done(CANCEL/full_filled), please using [Order/History](#Query-Order-History), otherwise order not found(404). **
+If order done(CANCEL/full_filled), please using [History/Order](#Query-History-Order), otherwise order not found(404).
 {% endnote %}
 
 #### /v1/order/status
@@ -285,12 +285,21 @@ Due to I/O limits of network, system returns max 100 orders once, all orders pag
 You can set field `page` number if your actived orders over 100.
 {% endblockquote %}
 
-### Query Order History
-{% note info Order/History %}
+### Query History Order
+{% note info History/Order %}
 ** This API provides DONE(CANCEL/full_filled) order query ONLY. **
-** If actived order, please using [Order/Status](#Query-Actived-Orders), otherwise order not found(404). **
+If actived order, please using [Order/Status](#Query-Actived-Orders), otherwise order not found(404).
 {% endnote %}
 
-#### /v1/order/history
+#### /v1/history/order
+to be written...
+
+
+### Query History Trade
+{% note info History/Trade %}
+Only provides query method by order, not listing.
+{% endnote %}
+
+#### /v1/history/trade
 to be written...
 
