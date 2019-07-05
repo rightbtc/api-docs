@@ -12,7 +12,7 @@ test-api-endpoint:
 
 ### Markets
 {% note info Market %}
-trading marketplace
+Trading marketplace that trader can palce order, identified by `mnem`.
 {% endnote %}
 
 #### /v1/markets
@@ -61,7 +61,10 @@ Key | Type | Description
 
 ### Contracts
 {% note info Contracts %}
-define contracts
+Contracts defines what your are trading, it's type is one of SPOT or OPTION(not release yet).
+if SPOT, use `lotDenom` and `tickDenom` to define precisions.
+if OPTION, use entire fields to define an OPTION contract.
+A contract can be palaced at a market, they are using same `mnem`.
 {% endnote %}
 
 #### /v1/contracts
@@ -94,8 +97,8 @@ Key | Type | Description
 --- | --- | ---
 `mnem`| [string] | global unique mnem(id) of this contract |
 `display`| [string] | display name of this contract |
-`asset`| [string] | subject asset of this contract |
-`ccy`| [string] | currency asset of this contract |
+`asset`| [string] | subject asset of this contract, `mnem` of [asset](#Assets) |
+`ccy`| [string] | currency asset of this contract, `mnem` of [asset](Assets) |
 `lotNumer`| [integer] | lot number of this contract, if null then spot |
 `lotDenom`| [integer] | lot denominator, define asset decimals to lot |
 `qtyInc`| [decimal] | real quantity of this contract |
@@ -108,24 +111,26 @@ Key | Type | Description
 `state` | [integer] | Open-1, Maintaince-503 |
 
 #### Lots
-Let's say BTC floating-Amount is `0.1 BTC`, we give lots `1000000` due to *lotDenom:1000000*
+Let's say BTC floatingAmount is `0.1 BTC`, we give lots `1000000` due to `lotDenom:1000000`
 ```
-lots = integer(floating-Amount * lotDenom)
+lots = integer(floatingAmount * lotDenom)
 
 eg: 100000 = integer(0.1 * 1000000)
 ```
 
 #### Ticks
-Let's say BTC floating-Price is `$9000.00`, we give ticks `900000` due to *tickDenom:100*
+Let's say BTC floatingPrice is `$9000.00`, we give ticks `900000` due to `tickDenom:100`
 ```
-ticks = integer(floating-Price * tickDenom)
+ticks = integer(floatingPrice * tickDenom)
 
 eg: 900000 = integer(9000 * 100)
 ```
 
 ### Assets
 {% note info Asset %}
-define asset
+Asset is one of [StableCoin, UtiltyToken, SecurtiyToken, Fiat, Index, NonStandard].
+`mnem` is refers to contracts.
+`denom` defines precisions of this asset, is defaults to `100000000` (8 decimal palaces).
 {% endnote %}
 
 #### /v1/assets
@@ -231,6 +236,7 @@ An array of ticker, may empty as `[]`.
 ### Trades
 
 {% note info Trades %}
+Latest trades of market.
 {% endnote %}
 
 #### /v1/pub/trades/$market_mnem
@@ -260,7 +266,8 @@ Key | Type | Description
 
 ### Depth
 {% note info Depth %}
-Limit max level is 50.
+order book of market.
+Display 50 levels.
 {% endnote %}
 
 #### /v1/pub/depth/$market_mnem
@@ -292,7 +299,7 @@ Key | Type | Description
 `count` | [ticks] | count of total orders at this tick |
 
 #### /v1/pub/fulldepth/$market_mnem
-Get full depth.
+Get full orderbook.
 ```bash
 $ curl --location --request GET https://test-api.rightbtc.com/v1/pub/fulldepth/ETPBTC
 ```

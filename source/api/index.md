@@ -45,9 +45,9 @@ Example: Bitcoin's price is $9000.00, then I want to BUY 0.1 BTC on RightBTC.
 
 Now we also know what is the minimum amount and price tick of any pair.
 
-See API [Contracts](https://api.rightbc.com/v1/contracts) to get each definition of the trading pairs.
+See API [Contracts](rest_pub.html#Contracts) to get each definition of the trading pairs.
 
-## REST API's
+## REST APIs
 
 ### General
 ```
@@ -148,4 +148,10 @@ Add below in Header,
 * content-type:application/json
 ```
 *Parsing JSON on RightBTC is faster than x-www-form-urlencoded*
+
+* See [Trader Info](rest_auth.html#Trader-Info)
+* See [Trader Balance](rest_auth.html#Trader-Balance)
+* See [Order New](rest_auth.html#Create-New-Order)
+* See [Order Cancel](rest_auth.html#Cancel-Active-Order)
+* See [Order Status](rest_auth.html#Query-Active-Orders)
 

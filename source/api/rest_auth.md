@@ -14,10 +14,11 @@ test-api-endpoint:
 
 ### Trader Info
 {% note info Trader Info %}
+A Trader belongs to a account.
+Basic info (fee/limitation) of this trader.
 {% endnote %}
 
 #### /v1/trader/info
-Basic info (fee/limitation) of this trader.
 
 Field | Type | Description
 --- | --- | ---
@@ -51,6 +52,7 @@ Key | Type | Description
 
 ### Trader Balance
 {% note info Trader Balance %}
+An array of asset balances.
 {% endnote %}
 
 #### /v1/trader/balance
@@ -81,7 +83,7 @@ $ curl --location --request POST "http://test-api.rightbtc.com/v1/trader/balance
 
 {% blockquote %}
 if not sent field `asset` then returns JSON array as following.
-**Always list those assets which have incoming history (trades/deposits).**
+**Always list those assets which had incoming (exchange in/deposits).**
 {% endblockquote %}
 ```json
 [
@@ -109,6 +111,9 @@ Key | Type | Description
 
 ### Create New Order
 {% note info Order/New %}
+Palace a new order to a market.
+Supports LIMIT,MARKET,STOP,FOK,IOC. (TRAILINGSTOP no release yet).
+Supports LIMIT-Hidden.
 {% endnote %}
 
 #### /v1/order/new
@@ -142,11 +147,11 @@ Key | Type | Description
 --- | --- | ---
 `id` | [integer] | `id` of order |
 `market` | [string] | `mnem` of market |
-`state` | [string] | Always "ACCEPTED" if accepted, asynchronous processing |
+`state` | [string] | Always "ACCEPTED" if POST ok, asynchronous processing |
 
 
 {% blockquote %}
-Global uniquness primary key is `market` and `id`, not single `id`.
+Order is unique identitfied by `market` and `id`(primary key), not single `id`.
 {% endblockquote %}
 
 ### Cancel Active Order
@@ -180,13 +185,13 @@ Key | Type | Description
 --- | --- | ---
 `id` | [integer] | `id` of order |
 `market` | [string] | `mnem` of market |
-`state` | [string] | Always "ACCEPTED" if accepted, asynchronous processing |
+`state` | [string] | Always "ACCEPTED" if POST ok, asynchronous processing |
 
 ### Query Active Orders
 {% note info Order/Status %}
 Order State must be in [`NEW`,`TRADE`,`CANCEL`] and [`PENDING`,`ACCEPTED`]
 * NEW - order is newly placed, not filled yet.
-* TRADE - order is `full_filled` or `particularly_filled`.
+* TRADE - order is `full_filled` or `particularly_filled` (you can check `resd` for particularly or full filled).
 * CANCEL - order is canceled by trader or system (STOP/FOK/IOC).
 * PENDING - a temporary state between acception and execution, extremely short.
 * ACCEPTED - a temporary state, extremely short.
@@ -199,9 +204,9 @@ If order is done(CANCEL/full_filled), please use [History/Order](#Query-History-
 
 Field | Type | Required | Description
 --- | --- | ---
-`id` | [integer] | Yes | `id` of order |
-`market` | [string] | Yes | `mnem` of market from [markets](rest_pub.html#Markets) |
-`page` | [integer] | No | page index |
+`id` | [integer] | No | `id` of order, query a active order under a market. |
+`market` | [string] | No |  if specify `mnem` of market, then return orders under this market. if not specified, return all active orders. |
+`page` | [integer] | No | page index, defaults to page 1, each page lists max 100 orders. |
 
 See [How to setup HTTP Headers](index.html#Authenticated-Endpoints)
 
