@@ -1,4 +1,5 @@
-title: INTRODUCTION
+title: Introduction
+comments: false
 ---
 Welcome to the RightBTC API documentation.
 The RightBTC API's are designed to allow access to all of the features of the RightBTC platform, subject to you complying with the API Terms of Service.
@@ -11,8 +12,9 @@ You can generate as many API keys as you would like (**Entity Account Required**
 
 |  PERMISSIONS | Read | Write |
 |  ------- | -------| ------- |
+|  BALANCE |  √  | × | 
 |  ORDERS   |  √  | √ | 
-|  ORDER_HISTORY   |  √  | √ | 
+|  ORDER_HISTORY   |  √  | × | 
 |  FEE |  √  | × | 
 |  DEPOSITS |  ×  | × | 
 |  WITHDRAWALS |  ×  | × | 
@@ -20,9 +22,7 @@ You can generate as many API keys as you would like (**Entity Account Required**
 ## Notes
 
 * Do not parse text descriptions, use only codes
-* All times are UTC timestamps expressed as micro-seconds (eg. 1571234567000), but candlestick API calls use seconds (eg. 1571234567).
-
-{% youtube ARted4RniaU %}
+* All times are UTC timestamps expressed as milliseconds (eg. 1571234567000), but candlestick API calls use seconds (eg. 1571234567).
 
 ## Precision
 

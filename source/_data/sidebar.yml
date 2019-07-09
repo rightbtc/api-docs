@@ -9,7 +9,6 @@ api:
     websocket_auth: websocket_auth.html
   miscellaneous:
     troubleshooting: troubleshooting.html
-    contributing: contributing.html
 
 FAQ:
   orders:

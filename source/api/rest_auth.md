@@ -1,4 +1,5 @@
 title: REST Authenticated Endpoints
+comments: false
 ---
 You can access the following endpoints:
 ``` yaml
@@ -282,8 +283,8 @@ Key | Type | Description
 `cost`: | [integer] | cost = Σ(lastLots * lastTicks) |
 `lastLots` | [lots] | last taken lots |
 `lastTicks` | [ticks] | last taken ticks |
-`created` | [time] | timestamp of created in micro-seconds |
-`modified` | [time] | timestamp of modified(taken/cancel) in micro-seconds |
+`created` | [time] | timestamp of created in milliseconds |
+`modified` | [time] | timestamp of modified(taken/cancel) in milliseconds |
 
 {% blockquote %}
 Due to I/O limits of network, system returns max 100 orders at once, all orders paged by each 100 orders.

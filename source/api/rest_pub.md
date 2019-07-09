@@ -1,4 +1,5 @@
 title: REST Public Endpoints
+comments: false
 ---
 You can access the following endpoints:
 ``` yaml
@@ -189,7 +190,7 @@ Key | Type | Description
 --- | --- | ---
 `lots` | [lots] | lots of ticker |
 `ticks` | [ticks] | ticks of ticker |
-`created` | [time] | timestamp of ticker in micro-seconds |
+`created` | [time] | timestamp of ticker in milliseconds |
 `high` | [ticks] | high of last 24 hours in ticks |
 `low` | [ticks] | low of last 24 hours in ticks |
 `tail` | [ticks] | the ticks of last 24 hours in ticks |
@@ -258,7 +259,7 @@ Key | Type | Description
 --- | --- | ---
 `lots` | [lots] | lots of each trade |
 `ticks` | [ticks] | ticks of each trade |
-`created` | [time] | timestamp of trade in micro-seconds |
+`created` | [time] | timestamp of trade in milliseconds |
 `side` | [string] | "BUY" or "SELL" |
 
 * See [market_mnem](#v1-markets)

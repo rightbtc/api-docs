@@ -1,4 +1,5 @@
 title: Open Source Libraries
+comments: false
 ---
 The following open source projects are works in progress. We will be continually improving them, but we want to release them early so that the community can take a look, make use of them, and offer pull requests. Nothing in the Bitcoin world exists in isolation.
 
