@@ -3,7 +3,7 @@
     <div id="footer-copyright">
     <a href="https://www.rightbtc.com/" class="link-tulipex" target="_blank">rightbtc.com</a><br>
      <br>
-      Copyright © 2013-2019 VIEWFIN-FZCO Inc. All rights reserved.
+      Copyright © 2013-2019 RightBTC. All rights reserved.
     </div>
     <div id="footer-links">
       <a href="https://twitter.com/{{ config.twitter }}" class="footer-link" target="_blank"><i class="fa fa-twitter"></i></a>
