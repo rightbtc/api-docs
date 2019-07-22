@@ -148,7 +148,7 @@ Add below in Header,
 * content-type:application/json
 ```
 
-Let's see the signature case of Javascript:
+Let's see the signature case in **Javascript**:
 ```js
 const crypto = require('crypto');
 
@@ -188,6 +188,41 @@ console.log(`SIGNATURE: ${signed}`);
 //   APIKEY: '4ci4regrwku4',
 //   SIGNATURE: 'b6c38f6145a3c5055a617fb969e75a76'
 // };
+```
+
+Let's see the signature case in **Python**:
+```python
+# run in python3
+
+import hashlib
+import json
+
+api_key = "4ci4regrwku4"
+secret_key = "6ijq4lcfyaw0bxjy1wweo5dk1zis97qd"
+nonce = "1563342032"
+
+body = {
+    "market": "ABBCUSDT",
+    "pageIndex": 0,
+    "pageSize": 20
+}
+
+body_str = json.dumps(body).replace(" ", "")
+print("body_str: %s" % body_str)
+
+sign_str = body_str + secret_key + nonce
+
+sign = hashlib.md5(sign_str.encode("utf-8")).hexdigest()
+
+print("SIGNATURE: %s" % sign)
+# print: SIGNATURE: b6c38f6145a3c5055a617fb969e75a76
+#
+# so, the header of the request should be :
+# {
+#   NONCE: 1563342032,
+#   APIKEY: '4ci4regrwku4',
+#   SIGNATURE: 'b6c38f6145a3c5055a617fb969e75a76'
+# };
 ```
 
 *Parsing JSON on RightBTC is faster than x-www-form-urlencoded*
