@@ -188,6 +188,20 @@ Key | Type | Description
 `market` | [string] | `mnem` of market |
 `state` | [string] | Always "ACCEPTED" if POST ok, asynchronous processing |
 
+#### /v1/order/cancel/all
+This API call will cancel all avtive orders under a market.
+
+Field | Type | Required | Description
+--- | --- | ---
+`market` | [string] | Yes | `mnem` of market from [markets](rest_pub.html#Markets) |
+
+```json
+{
+    "market": "BTCUSD",
+    "state": "ACCEPTED"
+}
+```
+
 ### Query Active Orders
 {% note info Order/Status %}
 Order State must be in [`NEW`,`TRADE`,`CANCEL`] and [`PENDING`,`ACCEPTED`]
