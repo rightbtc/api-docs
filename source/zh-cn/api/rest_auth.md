@@ -188,6 +188,20 @@ Key | Type | Description
 `market` | [string] | `mnem` of market |
 `state` | [string] | Always "ACCEPTED" if POST ok, asynchronous processing |
 
+#### /v1/order/cancel/all
+This API call will cancel all avtive orders under a market.
+
+Field | Type | Required | Description
+--- | --- | ---
+`market` | [string] | Yes | `mnem` of market from [markets](rest_pub.html#Markets) |
+
+```json
+{
+    "market": "BTCUSD",
+    "state": "ACCEPTED"
+}
+```
+
 ### Query Active Orders
 {% note info Order/Status %}
 Order State must be in [`NEW`,`TRADE`,`CANCEL`] and [`PENDING`,`ACCEPTED`]
@@ -292,14 +306,56 @@ You can set field `page` number if your active orders are over 100.
 {% endblockquote %}
 
 ### Query History Order
-{% note info History/Order %}
-** This API provides DONE(CANCEL/full_filled) order query ONLY. **
+{% note info %}
+** This API provides HISTORY(CANCEL/full_filled) order query ONLY. **
 If active order, please use [Order/Status](#Query-Actived-Orders), otherwise order not found(404).
 {% endnote %}
 
-#### /v1/history/order
-to be written...
+#### /api/trader/v1/order/history
+List your history orders of a market.
 
+| Field       | Type      | Description |
+| ----------- | --------- | ----------- |
+| `market`    | [string]  | `mnem` of market  |
+| `pageIndex` | [integer] | page index  |
+| `pageSize`  | [integer] | total pages |
+
+See [How to setup HTTP Headers](index.html#Authenticated-Endpoints)
+
+```shell
+curl --location --request POST "/api/trader/v1/order/history" \
+  --header "apikey: apikey" \
+  --header "signature: signature" \
+  --header "nonce: xxxxxx" \
+  --header "Content-Type: application/json" \
+  --data "{
+    \"market\": \"BTCETP\",
+    \"pageIndex\": 0, 
+    \"pageSize\": 20
+}"
+```
+
+#### /api/trader/v1/order/
+Get **a** history order by market and id.
+
+| Field    | Type      | Description |
+| -------- | --------- | ----------- |
+| `market` | [string]  | `mnem` of market |
+| `id`     | [integer] | `id` of order    |
+
+See [How to setup HTTP Headers](index.html#Authenticated-Endpoints)
+
+```shell
+curl --location --request POST "/api/trader/v1/order/" \
+  --header "apikey: apikey" \
+  --header "signature: signature" \
+  --header "nonce: nonce" \
+  --header "Content-Type: application/json" \
+  --data "{
+	\"market\": \"BTCETP\",
+	\"id\": 111111
+}"
+```
 
 ### Query History Trade
 {% note info History/Trade %}
