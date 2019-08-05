@@ -382,3 +382,32 @@ Key | Type | Description
 `v` | [lots] | vol lots |
 `m` | [time] | modified timestamp in seconds |
 
+#### /v1/pub/candlestick/$market_mnem:$cycle
+cycle should be in `60,300,900,1800,3600,7200,14400,21600,43200,86400,604800`.
+
+```bash
+$ curl --location --request GET https://test-api.rightbtc.com/v1/pub/candlestick/ETPBTC:300
+```
+```json
+[
+    {
+       "o": 1100,
+       "h": 1100,
+       "l": 1100,
+       "c": 1100,
+       "v": 0,
+       "m": 1561360920
+    },
+    {
+       "o": 1100,
+       "h": 1100,
+       "l": 1100,
+       "c": 1100,
+       "v": 0,
+       "m": 1561360920
+    },
+    ...
+]
+
+```
+
