@@ -165,6 +165,7 @@ function signData(header, bodyString, secretKey) {
 }
 
 // JSON body data
+// will add body in signed as payload
 let body = {
   market: "ABBCUSDT",
   pageIndex: 0, 
@@ -201,6 +202,7 @@ api_key = "4ci4regrwku4"
 secret_key = "6ijq4lcfyaw0bxjy1wweo5dk1zis97qd"
 nonce = "1563342032"
 
+# will add body in sign_str as payload
 body = {
     "market": "ABBCUSDT",
     "pageIndex": 0,
