@@ -1,5 +1,5 @@
-title: RightBTC FAQ
-subtitle: "RightBTC official API website."
+title: RightBTC Developer Documentations
+subtitle: "RightBTC official API Documentations."
 description: "RightBTC Dedicated to providing quality cryptocurrency trading services Professional digital asset wallet services,RightBTC official API website."
 author: RightBTC
 language: en
@@ -47,7 +47,7 @@ Regeneration: --watch
 
 
 # hexo-admin authentification
-admin:
-  username: zoro
-  password_hash: $2a$10$5B8qUToAjRNcncTI0DruhewgmyeL3ealA.0W1qEjeCLhDOGjAV.pW
-  secret: hey hexo
+#admin:
+#  username: zoro
+#  password_hash: $2a$10$5B8qUToAjRNcncTI0DruhewgmyeL3ealA.0W1qEjeCLhDOGjAV.pW
+#  secret: hey hexo

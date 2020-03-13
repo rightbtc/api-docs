@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="Email-to text-center"> 
-      <h3 class="h3-ztitle"> Can't find what you're looking for?</h3>
+      <h3 class="h3-ztitle">Need Help?</h3>
       <p class="mailto-des text-center"> Ticket here <a target="_self" href="https://rightbtc.zendesk.com/hc/en-us/requests/new" class="mailto">Zendesk of RightBTC</a>  to submit a new help desk ticket.</p>
   </div>
 </div>
