@@ -18,6 +18,6 @@
   </div>
   <div class="Email-to text-center"> 
       <h3 class="h3-ztitle"> Can't find what you're looking for?</h3>
-      <p class="mailto-des text-center"> Email  <a target="_self" href="mailto:business@rightbtc.com" class="mailto">business@rightbtc.com</a>  to submit a new help desk ticket.</p>
+      <p class="mailto-des text-center"> Ticket here <a target="_self" href="https://rightbtc.zendesk.com/hc/en-us/requests/new" class="mailto">Zendesk of RightBTC</a>  to submit a new help desk ticket.</p>
   </div>
 </div>
