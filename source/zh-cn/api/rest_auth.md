@@ -3,12 +3,19 @@ comments: false
 ---
 You can access the following endpoints:
 ``` yaml
-production-endpoint:
+product-endpoint:
 - https://api.rightbtc.com
 test-api-endpoint:
 - https://test-api.rightbtc.com
 ```
-*`production-endpoint`* provides real access of the RightBTC platform. Otherwise, *`test-api-endpoint`* is a dummy environment of RightBTC, you can apply for [testing api/secret pairs]() in order to test.
+*`product-endpoint`* provides real access of the RightBTC platform. Otherwise, *`test-api-endpoint`* is a dummy environment of RightBTC, you can apply for [testing api/secret pairs](https://test-api.rightbtc.com/dummyuser/) in order to test with some BTC/ETP/USD/DNA balance.
+```json 
+{
+  "display":"KrAZLSCA", // your DUMMY SECRET Key(it won't be shown on product env, NEVER)
+  "email":"wKkSBnXu", // your DUMMY trader api key
+  "mnem":"wKkSBnXu"
+} 
+```
 
 **All Authenticated Endpoints use POST requests.**
 *All examples assume the `test-api-endpoint`*.
@@ -156,7 +163,10 @@ Order is unique identitfied by `market` and `id`(primary key), not single `id`.
 {% endblockquote %}
 
 ### Cancel Active Order
-{% note info Order/Cancel %}
+{% note info Order/Cancel %} 
+Order/Cancel to cancel one single order
+Order/Cancel/Multi to cancel multiable orders
+Order/Cancel/All to cancel all orders
 {% endnote %}
 
 #### /v1/order/cancel
@@ -185,6 +195,35 @@ $ curl --location --request POST "http://test-api.rightbtc.com/v1/order/cancel" 
 Key | Type | Description 
 --- | --- | ---
 `id` | [integer] | `id` of order |
+`market` | [string] | `mnem` of market |
+`state` | [string] | Always "ACCEPTED" if POST ok, asynchronous processing |
+
+#### /v1/order/cancel/multi
+
+Field | Type | Required | Description
+--- | --- | ---
+`ids` | [array of integer] | Yes | array of `id` of each order |
+`market` | [string] | Yes | `mnem` of market from [markets](rest_pub.html#Markets) |
+
+See [How to setup HTTP Headers](index.html#Authenticated-Endpoints)
+
+```bash
+$ curl --location --request POST "http://test-api.rightbtc.com/v1/order/cancel/multi" \
+  --header "APIKEY: apiKey" \
+  --header "SIGNATURE: signature" \
+  --header "NONCE: 1561346769" \
+  --header "Content-Type: application/json"
+```
+```json
+{
+    "idsOnError": [100000011,100000012]
+    "market": "BTCUSD",
+    "state": "ACCEPTED"
+}
+```
+Key | Type | Description 
+--- | --- | ---
+`idsOnError` | [array of integer] | `id` of order which has exception on cancel|
 `market` | [string] | `mnem` of market |
 `state` | [string] | Always "ACCEPTED" if POST ok, asynchronous processing |
 

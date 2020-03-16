@@ -3,12 +3,19 @@ comments: false
 ---
 You can access the following endpoints:
 ``` yaml
-production-endpoint:
+product-endpoint:
 - https://api.rightbtc.com
 test-api-endpoint:
 - https://test-api.rightbtc.com
 ```
-*`production-endpoint`* provides real access of the RightBTC platform. Otherwise, *`test-api-endpoint`* is a dummy environment of RightBTC, you can apply for [testing api/secret pairs]() in order to test.
+*`product-endpoint`* provides real access of the RightBTC platform. Otherwise, *`test-api-endpoint`* is a dummy environment of RightBTC, you can apply for [testing api/secret pairs](https://test-api.rightbtc.com/dummyuser/) in order to test with some BTC/ETP/USD/DNA balance.
+```json 
+{
+  "display":"KrAZLSCA", // your DUMMY SECRET Key(it won't be shown on product env, NEVER)
+  "email":"wKkSBnXu", // your DUMMY trader api key
+  "mnem":"wKkSBnXu"
+} 
+```
 
 **All Authenticated Endpoints use POST requests.**
 *All examples assume the `test-api-endpoint`*.
