@@ -178,7 +178,9 @@ $ curl --location --request GET https://test-api.rightbtc.com/v1/pub/ticker/ETPB
     "lots": 1000000,
     "ticks": 1100,
     "ask": 1200,
+    "ask_lots": 12000,
     "bid": 1000,
+    "bid_lots": 10000,
     "created": 1561346769801,
     "last24": {
         "high": 1100,
@@ -193,7 +195,9 @@ Key | Type | Description
 `lots` | [lots] | lots of ticker |
 `ticks` | [ticks] | ticks of ticker |
 `ask` | [ticks] | ticks of best ask |
+`ask_lots` | [ticks] | lots of best ask |
 `bid` | [ticks] | ticks of best bid |
+`bid_lots` | [ticks] | lots of best bid |
 `created` | [time] | timestamp of ticker in milliseconds |
 `high` | [ticks] | high of last 24 hours in ticks |
 `low` | [ticks] | low of last 24 hours in ticks |
@@ -218,7 +222,9 @@ An array of ticker, may empty as `[]`.
         "ticks": 1100,
         "created": 1561346769801,
     	"ask": 1200,
+	"ask_lots": 12000,
     	"bid": 1000,
+    	"bid_lots": 10000,
         "last24": {
             "high": 1100,
             "low": 1100,
@@ -232,7 +238,9 @@ An array of ticker, may empty as `[]`.
         "ticks": null,
         "created": null,
     	"ask": null,
+    	"ask_lots": null,
     	"bid": null,
+    	"bid_lots": null,
         "last24": {
             "high": null,
             "low": null,
