@@ -123,7 +123,7 @@ $ curl --location --request POST "http://test-api.rightbtc.com/v1/trader/balance
 {% blockquote %}
 if sent field `asset` then returns JSON as following.
 {% endblockquote %}
-```
+```json
 {
     "EXCHANGE": {
         "asset": "BTC",
@@ -245,6 +245,155 @@ it will returns:
 ```json
 null
 ```
+
+#### /v1/trader/transfer
+
+Field | Type | Required | Description
+--- | --- | ---
+`asset` | [string] | Yes | specify an [asset](rest_pub.html#Assets) `mnem`. |
+`from` | [string] | Yes | specify an wallet type of "EXCHANGE" "MARGIN" "FUNDING". |
+`to` | [string] | Yes | specify an wallet type of "EXCHANGE" "MARGIN" "FUNDING". |
+`amount` | [integer] | Yes | how many amount you want to transfer. |
+
+
+```bash
+$ curl --location --request POST "http://test-api.rightbtc.com/v1/trader/balance" \
+  --header "APIKEY: apiKey" \
+  --header "SIGNATURE: signature" \
+  --header "NONCE: 1561346769" \
+  --header "Content-Type: application/json"
+  --data "{\"asset\":\"USDT\",\"from\":\"EXCHANGE\",\"to\":\"MARGIN\",\"amount\":100000}"
+```
+```json
+{
+    "MARGIN": {
+        "asset": "USDT",
+        "balance": 100000,
+        "available": 100000,
+        "denom": 100000000
+    },
+    "EXCHANGE": {
+        "asset": "USDT",
+        "balance": 600000000100000,
+        "available": 600000000100000,
+        "denom": 100000000
+    }
+}
+```
+
+### Trader Margin
+{% note info Trader Loan and Repay and Info %}
+{% endnote %}
+
+#### /v1/margin/loan
+
+Field | Type | Required | Description
+--- | --- | ---
+`asset` | [string] | Yes | specify an [asset](rest_pub.html#Assets) `mnem`. |
+`amount` | [integer] | Yes | how many amount you want to loan. |
+
+```bash
+$ curl --location --request POST "http://test-api.rightbtc.com/v1/margin/loan" \
+  --header "APIKEY: apiKey" \
+  --header "SIGNATURE: signature" \
+  --header "NONCE: 1561346769" \
+  --header "Content-Type: application/json"
+  --data "{\"asset\":\"BTC\",\"amount\":10000000}"
+```
+```json
+{
+    "FUNDING": {
+        "asset": "BTC",
+        "loan": 20000000,
+        "contributes": 25000,
+        "lend": 0,
+        "offer": 0,
+        "commissions": 0,
+        "balance": -20000000,
+        "available": -20000000,
+        "denom": 100000000,
+        "trader": "chenhao",
+        "lends": 0,
+        "loans": 20000000
+    }
+}
+```
+
+#### /v1/margin/repay
+
+Field | Type | Required | Description
+--- | --- | ---
+`asset` | [string] | Yes | specify an [asset](rest_pub.html#Assets) `mnem`. |
+`amount` | [integer] | Yes | how many amount you want to repay. |
+
+```bash
+$ curl --location --request POST "http://test-api.rightbtc.com/v1/margin/repay" \
+  --header "APIKEY: apiKey" \
+  --header "SIGNATURE: signature" \
+  --header "NONCE: 1561346769" \
+  --header "Content-Type: application/json"
+  --data "{\"asset\":\"BTC\",\"amount\":150000000}"
+```
+```json
+{
+    "FUNDING": {
+        "asset": "BTC",
+        "loan": 19825000,
+        "contributes": 0,
+        "lend": 0,
+        "offer": 0,
+        "commissions": 0,
+        "balance": -19825000,
+        "available": -19825000,
+        "denom": 100000000,
+        "trader": "chenhao",
+        "lends": 0,
+        "loans": 20000000
+    }
+}
+```
+
+#### /v1/margin/info
+
+Field | Type | Required | Description
+--- | --- | ---
+`asset` | [string] | No | specify an [asset](rest_pub.html#Assets) `mnem`. |
+
+```bash
+$ curl --location --request POST "http://test-api.rightbtc.com/v1/margin/info" \
+  --header "APIKEY: apiKey" \
+  --header "SIGNATURE: signature" \
+  --header "NONCE: 1561346769" \
+  --header "Content-Type: application/json"
+  --data "{\"asset\":\"BTC\"}"
+```
+```json
+{
+    "maxAvailable": 1109545722047,
+    "maxTransferable": 150019800000
+}
+```
+
+{% blockquote %}
+if NOT sent field `asset`, it will returns:
+{% endblockquote %}
+
+```json
+{
+    "marginValue": 5.54953e+15,
+    "unpaidValue": 1.19952e+12
+}
+```
+
+Key | Type | Description 
+--- | --- | ---
+`maxAvailable` | [double] | max Available to loan under specified asset. |
+`maxTransferable` | [double] | max Available to transfer under specified asset. |
+
+Key | Type | Description 
+--- | --- | ---
+`marginValue` | [double] | margin amount in dollars |
+`unpaidValue` | [double] | unpaid amount in dollars |
 
 ### Create New Order
 {% note info Order/New %}
